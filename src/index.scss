@@ -19,7 +19,7 @@ body {
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
   max-width: 1080px;
-  margin: 85px auto;
+  margin: 85px auto 0;
   line-height: 1.2;
 
 }
@@ -101,12 +101,29 @@ header {
   }
 
   &__search{
-    font-size: 14px;
+    border: 1px solid #F3F3F3;
+    border-radius: 10px;
+    padding: 15px;
+    @include flexbox();
+    
+    img{
+      padding-right: 14px;
+    }
+
+    input{
+      width: 180px;
+      &::placeholder{
+        font-size: 14px;
+        color: #C4C4C4;
+      }
+    }
   }
 
   &__cards{
     @include flexbox();
-    justify-content: space-between;
+    // justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
   }
 
 }
@@ -117,6 +134,14 @@ header {
   width: 210px;
   padding-top: 20px;
   height: 260px;
+  // cursor: pointer;
+  @include anim(0.2s,0s);
+  margin-bottom: 40px;
+
+  &:hover{
+    transform: translate(0, -10px);
+    box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.06);
+  }
 
   &__wrapper {
     margin: 0 auto;
@@ -127,15 +152,10 @@ header {
   &__fav{
     top: 9px;
     left: -3px;
-    background-color: #fff;
     width: 32px;
     height: 32px;
-    border: 1px solid #F8F8F8;
-    border-radius: 7px;
-    @include flexbox();
-    justify-content: center;
-    align-items: center;
     position: absolute;
+    cursor: pointer;
   }
 
   &__image{
@@ -171,12 +191,167 @@ header {
   &__add{
     width: 32px;
     height: 32px;
-    @include flexbox();
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #F2F2F2;
-    border-radius: 8px;
-    background-color: #fff;
+    cursor: pointer;
   }
 
+}
+
+aside{
+  height: 100%;
+  width: 100%;
+  
+  .overlay{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .cart{
+    padding: 30px;
+    background-color: #fff;
+    position: absolute;
+    width: 420px;
+    height: 100%;
+    right: 0;
+    top: 0;
+    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+    @include flexbox();
+    flex-direction: column;
+
+    &__head{
+      @include flexbox();
+      justify-content: space-between;
+    }
+
+    h1{
+      font-weight: 700;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    &__items{
+      flex: 1;
+      overflow: auto;
+      margin-bottom: 40px;
+      padding-right: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: #9DD558 #9dd5586e;
+
+      &::-webkit-scrollbar{
+        width: 5px; /* ширина всей полосы прокрутки */
+
+        &-track{
+          background: #9dd5586e; /* цвет зоны отслеживания */
+        }
+
+        &-thumb{
+          background-color: #9DD558; /* цвет бегунка */
+          border-radius: 20px; /* округлось бегунка */
+          border: .5px solid #9dd5586e; /* отступ вокруг бегунка */
+        }
+      }
+    }
+
+    &__bottom{
+      font-size: 16px;
+      position: relative;
+    }
+
+    &__summary{
+      li{
+        display: flex;
+        margin-bottom: 20px;
+        &:last-child{
+          margin-bottom: 25px;
+        }
+      }
+      span{
+
+      }
+      div{
+        flex: 1;
+        border-bottom: 1px dashed #DFDFDF;
+        margin: 0 8px;
+        transform: translateY(-4px);
+      }
+      b{
+        font-weight: 600;
+      }
+    }
+
+    &__checkout{
+      cursor: pointer;
+      text-align: center;
+      width: 100%;
+      background: #9DD558;
+      border-radius: 18px;
+      padding: 18px 0;
+      position: relative;
+      span{
+        font-weight: 600;
+        color: #FFFFFF;
+      }
+      img{
+        position: absolute;
+        top: 50%;
+        right: 33px;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+
+.cart-item{
+  @include flexbox();
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #F3F3F3;
+  border-radius: 20px;
+  padding: 0 20px;
+  height: 119px;
+  overflow: hidden;
+  margin-bottom: 20px;
+
+  &:last-child{
+    margin-bottom: 0;
+  }
+
+  &__image{
+    width: 70px;
+    height: 70px;
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    margin-right: 20px;
+  }
+
+  &__wrapper{
+    // @include flexbox();
+    // flex-direction: column;
+    width: 50%;
+    font-size: 14px;
+    margin-right: 12px;
+  }
+
+  &__desc{
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  &__price{
+    font-weight: 700;
+  }
+
+  &__remove{
+    opacity: 0.5;
+    @include anim(0.2s,0s);
+    cursor: pointer;
+
+    &:hover, &:focus{ 
+      opacity: 1;
+    }
+  }
 }
