@@ -1,0 +1,63 @@
+@import "./../../scss/mixins";
+@import "./../../scss/nullstyle";
+
+header {
+    border-bottom: 1px solid #EAEAEA;
+    
+    .header{
+  
+      @include flexbox();
+      justify-content: space-between;
+      padding: 45px 0;
+  
+      .headerLeft{
+        @include flexbox();
+        align-items: center;
+  
+        img {
+          margin-right: 15px;
+        }
+  
+        .title{
+          font-weight: 700;
+          font-size: 20px;
+          text-transform: uppercase;
+        }
+  
+        .subtitle{
+          font-size: 14px;
+          color: #9D9D9D;
+        }
+  
+      }
+  
+      .headerRight{
+        @include flexbox();
+        align-items: center;
+        
+        & li{
+          @include flexbox();
+          align-items: center;
+          font-weight: 600;
+          font-size: 14px;
+          color: #5C5C5C;
+          margin-right: 30px;
+          cursor: pointer;
+          opacity: 0.5;
+          @include anim(0.3s,0s);
+          &:hover{
+            opacity: 1;
+          }
+  
+          &:last-child{
+            margin-right: 0;
+          }
+  
+          & span {
+            margin-left: 10px;
+          }
+  
+        }
+      }
+    }
+  }

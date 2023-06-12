@@ -1,37 +1,39 @@
-function Cart() {
+import styles from './Cart.module.scss'
+
+function Cart(props) {
     return (
-        <div style={{ display: 'none' }} className="overlay">
-            <div className="cart">
-                <div className="cart__head">
+        <div className={styles.overlay}>
+            <div className={styles.cart}>
+                <div className={styles.head}>
                     <h1>Корзина</h1>
-                    <div className="cart-item__remove">
+                    <div className={styles.remove} onClick={props.onClickClose}>
                         <img src="/img/delFromCart.svg" alt="remove" />
                     </div>
                 </div>
-                <div className="cart__items">
-                    <div className="cart-item">
-                        <div style={{ backgroundImage: 'url(/img/sneakers/01.jpg)' }} className="cart-item__image"></div>
-                        <div className="cart-item__wrapper">
-                            <p className="cart-item__desc">Мужские Кроссовки Nike Blazer Mid Suede</p>
-                            <b className="cart-item__price">12 999 руб.</b>
+                <div className={styles.items}>
+                    <div className={styles.cartItem}>
+                        <div style={{ backgroundImage: 'url(/img/sneakers/01.jpg)' }} className={styles.image}></div>
+                        <div className={styles.wrapper}>
+                            <p className={styles.desc}>Мужские Кроссовки Nike Blazer Mid Suede</p>
+                            <b className={styles.price}>12 999 руб.</b>
                         </div>
-                        <div className="cart-item__remove">
+                        <div className={styles.remove}>
                             <img src="/img/delFromCart.svg" alt="remove" />
                         </div>
                     </div>
-                    <div className="cart-item">
+                    <div className={styles.cartItem}>
                         <div style={{ backgroundImage: 'url(/img/sneakers/01.jpg)' }} className="cart-item__image"></div>
-                        <div className="cart-item__wrapper">
-                            <p className="cart-item__desc">Мужские Кроссовки Nike Blazer Mid Suede</p>
-                            <b className="cart-item__price">12 999 руб.</b>
+                        <div className={styles.wrapper}>
+                            <p className={styles.desc}>Мужские Кроссовки Nike Blazer Mid Suede</p>
+                            <b className={styles.price}>12 999 руб.</b>
                         </div>
-                        <div className="cart-item__remove">
+                        <div className={styles.remove}>
                             <img src="/img/delFromCart.svg" alt="remove" />
                         </div>
                     </div>
                 </div>
-                <div className="cart__bottom">
-                    <ul className="cart__summary">
+                <div className={styles.bottom}>
+                    <ul className={styles.summary}>
                         <li>
                             <span>Итого:</span>
                             <div></div>
@@ -43,7 +45,7 @@ function Cart() {
                             <b>1074 руб.</b>
                         </li>
                     </ul>
-                    <div className="cart__checkout">
+                    <div className={styles.checkout}>
                         <span>Оформить заказ</span>
                         <img width={14} height={12} src="/img/arrow.svg" alt="Go" />
                     </div>
