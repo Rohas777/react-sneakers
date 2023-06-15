@@ -25,7 +25,6 @@ body {
   max-width: 1080px;
   margin: 85px auto 0;
   line-height: 1.2;
-  // {cartOpened ? { overflow: "hidden" } : { overflow: "auto" }}
 
 }
 
@@ -33,6 +32,10 @@ body {
 aside{
   height: 100%;
   width: 100%; 
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
 }
 
 
@@ -54,15 +57,36 @@ aside{
   &__title{
     font-weight: 700;
     font-size: 32px;
+    max-width: 500px;
   }
 
   &__search{
     border: 1px solid #F3F3F3;
     border-radius: 10px;
     padding: 15px;
+    padding-right: 50px;
     @include flexbox();
+    position: relative;
+
+    .clear{
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      width: 12px;
+      height: 12px;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      opacity: 0.5;
+      @include anim(0.3s,0s);
+      &:hover{
+        opacity: 1;
+      }
+    }
     
-    img{
+    .search{
       padding-right: 14px;
     }
 

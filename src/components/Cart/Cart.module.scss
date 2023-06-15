@@ -4,8 +4,8 @@
 .overlay{
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -151,9 +151,99 @@
 .remove{
   opacity: 0.5;
   @include anim(0.2s,0s);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  padding: 8px;
+  border: 1px solid #DBDBDB;
+  border-radius: 8px;
 
   &:hover, &:focus{ 
     opacity: 1;
+  }
+}
+
+.cartEmpty{
+  flex: 1;
+  @include flexbox();
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img{
+    margin-bottom: 20px;
+  }
+  h1{
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    margin-bottom: 10px;
+  }
+  .subtitle{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    opacity: 0.4;
+    margin-bottom: 40px;
+    text-align: center;
+    max-width: 285px;
+  }
+  .back{
+    @include flexbox();
+    background: #9DD458;
+    border-radius: 18px;
+    cursor: pointer;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 45px;
+    width: 245px;
+    overflow: hidden;
+
+    img{
+      position: absolute;
+      top: 50%;
+      left: -100%;
+      transform: translateY(-50%) rotate(180deg);
+      @include anim(0.3s,0s);
+    }
+    p{
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 19px;
+      position: relative;
+      color: #FFFFFF;
+      left: 0;
+      @include anim(0.3s,0s);
+    }
+    &:hover, &:focus{
+      p{
+        left: 11px;
+      }
+      img{
+        left: 30px;
+      }
+    }
+    &:active{
+      img{
+        animation-name: arrowClicked;
+        animation-duration: 0.2s;
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+}
+
+@keyframes arrowClicked{
+  0%{
+    left: 30px;
+  }
+  50%{
+    left: 10px;
+  }
+  100%{
+    left: 30px;
   }
 }
